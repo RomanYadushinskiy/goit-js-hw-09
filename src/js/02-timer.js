@@ -52,7 +52,8 @@ function addLeadingZero(value) {
 btnStartRef.addEventListener('click', () => {
   let timerRef = setInterval(() => {
     let countdownTimer = new Date(inputRef.value) - new Date();
-    btnStartRef.disabled = true;
+    btnStartRef.disabled = true;  
+    inputRef.disabled = true;
     if (countdownTimer > 0) {
       let timeObject = convertMs(countdownTimer);
       daysRef.textContent = addLeadingZero(timeObject.days);
@@ -62,6 +63,7 @@ btnStartRef.addEventListener('click', () => {
     } else {
       Notiflix.Notify.success('Time is out!');
       clearInterval(timerRef);
+      inputRef.disabled = false;  
     }
   }, 1000);
 });
